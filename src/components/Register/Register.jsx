@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContext';
 import { FcGoogle } from "react-icons/fc";
 // ***
 import { useForm } from 'react-hook-form';
 import { errorToast, infoToast } from '../../utilities/toasts';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -15,12 +15,14 @@ const Register = () => {
     // ***
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const [passVisible, setPassVisible] = useState(false);
+
     const googleSignIn = () => {
         signInGoogle()
             .then(res => {
                 const { user } = res;
                 console.log(user);
-                infoToast(<b>Successfully Registered</b>, 2000);
+                infoToast(<b>Successfully Registered</b>, 1000);
                 navigate(from, { replace: true });
             })
             .catch(err => {
@@ -33,7 +35,7 @@ const Register = () => {
             .then(res => {
                 const { user } = res;
                 console.log(user);
-                infoToast(<b>Successfully Registered</b>, 2000);
+                infoToast(<b>Successfully Registered</b>, 1000);
                 navigate(from, { replace: true });
             })
             .catch(err => {
@@ -53,7 +55,10 @@ const Register = () => {
                         errorToast(<b>{err.message}</b>, 5000);
                     })
                 console.log(user);
-                infoToast(<b>Successfully Registered</b>, 2000);
+                infoToast(<b>Successfully Registered</b>, 1000);
+                setTimeout(() => {
+                    infoToast(<b>Verification Email sent<br />Please verify your mail<br />Check spam folder if not found</b>, 3000);
+                }, 2000);
                 navigate(from, { replace: true });
             })
             .catch(err => {
@@ -99,7 +104,12 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input className="input input-bordered" type="password" placeholder="password" {...register("password", { required: true, minLength: 6 })} />
+                                    <div className='flex gap-2'>
+                                        <input className="input input-bordered" type={passVisible ? "text" : "password"} placeholder="password" {...register("password", { required: true, minLength: 6 })} />
+                                        <div onClick={() => setPassVisible(!passVisible)} className='btn btn-ghost text-lg'>
+                                            {passVisible ? <FaEyeSlash /> : <FaEye />}
+                                        </div>
+                                    </div>
                                     {
                                         errors.password?.type === 'required' && <p className='text-error px-2 mt-2' role="alert">Password is required</p>
                                     }
