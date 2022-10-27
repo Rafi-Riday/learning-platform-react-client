@@ -2,11 +2,15 @@ import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import firebaseApp from '../firebase/firebase.config';
 
+// auth context
 export const AuthContext = createContext();
+// navbar context
+export const NavBarOpenContext = createContext({});
 
 const auth = getAuth(firebaseApp);
 
 const UseContext = ({ children }) => {
+    // auth context provider
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -46,10 +50,17 @@ const UseContext = ({ children }) => {
         }
     }, []);
 
+    // navbar context
+    // NavBar scrolling effect
+    const [navBarY, setNavBarY] = useState('top-0');
+
+
     return (
-        <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, signInGoogle, signInGithub, updateUser, signOutUser, }}>
-            {children}
-        </AuthContext.Provider>
+        <NavBarOpenContext.Provider value={{ navBarY, setNavBarY }}>
+            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, signInGoogle, signInGithub, updateUser, signOutUser, }}>
+                {children}
+            </AuthContext.Provider>
+        </NavBarOpenContext.Provider>
     );
 };
 
