@@ -50,10 +50,8 @@ const UseContext = ({ children }) => {
         }
     }, []);
 
-    // navbar context
     // NavBar scrolling effect
     const [navBarY, setNavBarY] = useState('top-0');
-
 
     return (
         <NavBarOpenContext.Provider value={{ navBarY, setNavBarY }}>
