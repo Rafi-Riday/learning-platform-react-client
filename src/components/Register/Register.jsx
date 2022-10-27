@@ -11,7 +11,7 @@ const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    const { setLoading, createUser, updateUser, signInGoogle, signInGithub } = useContext(AuthContext);
+    const { setLoading, createUser, updateUser, signInGoogle, signInGithub, resetPass } = useContext(AuthContext);
     // ***
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -26,7 +26,7 @@ const Register = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.message}</b>, 5000);
+                errorToast(<b>{err.code}</b>, 5000);
             })
     };
 
@@ -39,7 +39,7 @@ const Register = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.message}</b>, 5000);
+                errorToast(<b>{err.code}</b>, 5000);
             })
     };
 
@@ -52,7 +52,7 @@ const Register = () => {
                 updateUser(fullName, imageURL)
                     .then(() => { setLoading(false) })
                     .catch(err => {
-                        errorToast(<b>{err.message}</b>, 5000);
+                        errorToast(<b>{err.code}</b>, 5000);
                     })
                 console.log(user);
                 infoToast(<b>Successfully Registered</b>, 1000);
@@ -62,7 +62,18 @@ const Register = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.message}</b>, 5000);
+                errorToast(<b>{err.code}</b>, 5000);
+            })
+    };
+
+    const [userEmail, setUserEmail] = useState('');
+    const resetPassFunc = email => {
+        resetPass(email)
+            .then(() => {
+                infoToast(<b>Reset Email sent<br />Please check your inbox & spam</b>, 3000);
+            })
+            .catch(err => {
+                errorToast(<b>{err.code}</b>, 3000);
             })
     };
 
@@ -95,7 +106,7 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input className="input input-bordered" type="email" placeholder="email" {...register("email", { required: true })} />
+                                    <input onKeyUp={e => setUserEmail(e.target.value)} className="input input-bordered" type="email" placeholder="email" {...register("email", { required: true })} />
                                     {
                                         errors.email?.type === 'required' && <p className='text-error px-2 mt-2' role="alert">Email is required</p>
                                     }
@@ -119,6 +130,12 @@ const Register = () => {
                                     <label className="label">
                                         <Link to='/login' className="label-text-alt link link-hover">Already have an Account? <u>Login</u></Link>
                                     </label>
+                                    {
+                                        (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(userEmail) &&
+                                        <label className="label">
+                                            <Link onClick={() => resetPassFunc(userEmail)} className="label-text-alt link link-hover">Forgot password?<br />Reset password for this email</Link>
+                                        </label>
+                                    }
                                 </div>
                                 <div className="form-control mt-6">
                                     <input className="btn btn-secondary" type="submit" />

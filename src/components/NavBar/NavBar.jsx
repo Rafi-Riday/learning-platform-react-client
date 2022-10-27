@@ -1,19 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
-import { HiX } from "react-icons/hi";
+import { HiX, HiUser } from "react-icons/hi";
 import { AuthContext, NavBarOpenContext } from '../../contexts/UseContext';
-import { infoToast } from '../../utilities/toasts';
+import { errorToast, infoToast } from '../../utilities/toasts';
 
 const NavBar = () => {
-    const { user, signOutUser } = useContext(AuthContext);
+    const { user, signOutUser, resetPass } = useContext(AuthContext);
     const signOutFunc = () => {
         signOutUser()
             .then(() => {
                 infoToast(<b>Signed Out !!</b>, 2000);
             })
             .catch(err => {
-                errorToast(<b>{err.message}</b>, 5000);
+                errorToast(<b>{err.code}</b>, 5000);
+            })
+    };
+    const resetPassFunc = email => {
+        resetPass(email)
+            .then(() => {
+                infoToast(<b>Reset Email sent<br />Please check your inbox & spam</b>, 3000);
+            })
+            .catch(err => {
+                errorToast(<b>{err.code}</b>, 3000);
             })
     };
     const { navBarY, setNavBarY } = useContext(NavBarOpenContext);
@@ -21,9 +30,6 @@ const NavBar = () => {
     const [darkTheme, setDarkTheme] = useState(false);
     const mainHTML = document.getElementById('main-html');
     darkTheme ? mainHTML.setAttribute('data-theme', 'dracula') : mainHTML.setAttribute('data-theme', 'pastel');
-    useEffect(() => {
-        console.log(darkTheme);
-    }, [darkTheme]);
     // scrolling effects
     const [navLink, setNavLink] = useState(false);
     const [scrollingY, setScrollingY] = useState({ count: window.scrollY, direction: null });
@@ -35,6 +41,8 @@ const NavBar = () => {
     };
     const activeLink = 'btn btn-sm btn-outline text-neutral-content hover:text-neutral-content hover:bg-neutral hover:border-neutral-content';
     const notActiveLink = 'btn btn-sm';
+    // user image
+    const [imageNoError, setImageNoError] = useState(true);
     return (
         <div className={`${navBarY} transition-all duration-[400ms] sm:duration-500 z-50 fixed w-full`}>
             <div className='bg-neutral px-6 py-4 flex items-center justify-between'>
@@ -42,18 +50,24 @@ const NavBar = () => {
                     {/* <img className='w-11 h-11' src="/logo.png" alt="logo" /> */}
                     <h3 className='text-lg font-bold'>Edu CSE</h3>
                 </div>
-                <div onMouseEnter={() => setNavLink(true)} onMouseLeave={() => setNavLink(false)} className={`bg-neutral sm:bg-transparent p-6 pt-10 sm:p-0 flex flex-col sm:flex-row justify-center gap-5 absolute sm:relative ${navLink ? 'top-10' : '-top-72'} sm:top-0 right-4 sm:right-0 rounded-b-xl transition-all duration-300 -z-10 sm:z-0`}>
+                <div onMouseEnter={() => setNavLink(true)} onMouseLeave={() => setNavLink(false)} className={`bg-neutral sm:bg-transparent p-6 pt-10 sm:p-0 flex flex-col sm:flex-row justify-center items-center gap-5 absolute sm:relative ${navLink ? 'top-10' : '-top-72'} sm:top-0 right-4 sm:right-0 rounded-b-xl transition-all duration-300 -z-10 sm:z-0`}>
                     <NavLink className={({ isActive }) => isActive ? activeLink : notActiveLink} to='/home'>Home</NavLink>
                     <NavLink className={({ isActive }) => isActive ? activeLink : notActiveLink} to='/orders'>Orders</NavLink>
-                    {
-                        user?.uid ? void (0) :
-                            <>
-                                <NavLink className={({ isActive }) => isActive ? activeLink : notActiveLink} to='/register'>Register</NavLink>
-                                <NavLink className={({ isActive }) => isActive ? activeLink : notActiveLink} to='/login'>Login</NavLink>
-                            </>
-                    }
                     <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-sm w-full">More</label>
+                        <div className="tooltip tooltip-left tooltip-accent" data-tip={(user?.uid && user?.displayName) ? user?.displayName.split(' ')[0] : 'Login?'}>
+                            <label tabIndex={0} className="btn btn-sm btn-circle w-full">
+                                <div className={`avatar ${user?.uid && 'online'}`}>
+                                    <div className="w-8 rounded-full">
+                                        {
+                                            (imageNoError && user?.photoURL) ?
+                                                <img src={user.photoURL} onError={() => setImageNoError(false)} />
+                                                :
+                                                <HiUser className='text-3xl' />
+                                        }
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
                         <div tabIndex={0} className="dropdown-content menu p-2 mt-2 border bg-neutral rounded-box w-32 flex flex-col gap-2">
                             <label className='btn btn-sm' htmlFor="theme">Theme&nbsp;
                                 <label className="swap swap-rotate">
@@ -63,7 +77,16 @@ const NavBar = () => {
                                 </label>
                             </label>
                             {
-                                user?.uid && <button onClick={signOutFunc} className='btn btn-error btn-sm'>Logout</button>
+                                user?.uid ?
+                                    <>
+                                        <button onClick={() => resetPassFunc(user?.email)} className='btn btn-error btn-sm text-xs'>Reset Pass</button>
+                                        <button onClick={signOutFunc} className='btn btn-error btn-sm text-xs'>Logout</button>
+                                    </>
+                                    :
+                                    <>
+                                        <NavLink className={({ isActive }) => isActive ? activeLink : notActiveLink} to='/register'>Register</NavLink>
+                                        <NavLink className={({ isActive }) => isActive ? activeLink : notActiveLink} to='/login'>Login</NavLink>
+                                    </>
                             }
                         </div>
                     </div>

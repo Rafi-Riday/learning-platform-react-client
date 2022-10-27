@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import firebaseApp from '../firebase/firebase.config';
 
 // auth context
@@ -40,6 +40,9 @@ const UseContext = ({ children }) => {
         setLoading(true);
         return signOut(auth);
     };
+    const resetPass = (email) => {
+        return sendPasswordResetEmail(auth, email);
+    };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -55,7 +58,7 @@ const UseContext = ({ children }) => {
 
     return (
         <NavBarOpenContext.Provider value={{ navBarY, setNavBarY }}>
-            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, signInGoogle, signInGithub, updateUser, signOutUser, }}>
+            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, }}>
                 {children}
             </AuthContext.Provider>
         </NavBarOpenContext.Provider>
