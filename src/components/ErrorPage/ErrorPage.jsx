@@ -25,6 +25,7 @@ const ErrorPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CourseCard from '../CourseCard/CourseCard';
 import HeaderText from '../HeaderText/HeaderText';
 import { HiOutlineDownload, HiStar } from 'react-icons/hi';
@@ -25,7 +25,7 @@ const Course = () => {
                         <button className='btn btn-sm btn-outline' onClick={toPdf}>Save pdf&nbsp;&nbsp;<HiOutlineDownload className='text-lg text-indigo-500' /></button>
                     )}
                 </ReactToPdf>
-                <button className='btn btn-sm btn-outline'>Get Premium Access&nbsp;&nbsp;<HiStar className='text-lg text-orange-400' /></button>
+                <Link to='/checkout' className='btn btn-sm btn-outline'>Get Premium Access&nbsp;&nbsp;<HiStar className='text-lg text-orange-400' /></Link>
             </div>
         </>
     );

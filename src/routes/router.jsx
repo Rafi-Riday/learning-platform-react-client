@@ -12,6 +12,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Content from "../components/Content/Content";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
+import CheckOut from "../components/CheckOut/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />
+        element: <Login />,
+      },
+      {
+        path: '/checkout',
+        element: <PrivateRoute><CheckOut /></PrivateRoute>,
       },
       {
         path: '*',

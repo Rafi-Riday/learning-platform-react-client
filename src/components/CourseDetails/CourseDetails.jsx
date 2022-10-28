@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CourseCard from '../CourseCard/CourseCard';
 import HeaderText from '../HeaderText/HeaderText';
 import { HiOutlineDownload, HiStar } from 'react-icons/hi';
@@ -27,8 +27,8 @@ const CourseDetails = () => {
                                 <h2 className="card-title justify-center">{course}. {name}</h2>
                                 <hr />
                                 <p>Total Parts : <span className='font-extrabold text-orange-500'>{totalParts}</span></p>
-                                <p>Total Weeks : <span className='font-extrabold text-orange-500'>{totalWeeks}</span></p>
                                 <p>Total Lessons : <span className='font-extrabold text-orange-500'>{totalLessons}</span></p>
+                                <p>Course Duration : <span className='font-extrabold text-orange-500'>{totalWeeks} weeks</span></p>
                                 <hr />
                             </div>
                         </div>
@@ -41,7 +41,7 @@ const CourseDetails = () => {
                             <button className='btn btn-sm btn-outline' onClick={toPdf}>Save pdf&nbsp;&nbsp;<HiOutlineDownload className='text-lg text-indigo-500' /></button>
                         )}
                     </ReactToPdf>
-                    <button className='btn btn-sm btn-outline'>Get Premium Access&nbsp;&nbsp;<HiStar className='text-lg text-orange-400' /></button>
+                    <Link to='/checkout' className='btn btn-sm btn-outline'>Get Premium Access&nbsp;&nbsp;<HiStar className='text-lg text-orange-400' /></Link>
                 </div>
             </div>
         </div>
