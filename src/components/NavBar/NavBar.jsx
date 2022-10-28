@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaBars, FaArrowRight } from "react-icons/fa";
 import { HiX, HiUser, HiOutlineLogin, } from "react-icons/hi";
 import { AuthContext, NavBarOpenContext } from '../../contexts/UseContext';
 import { errorToast, infoToast } from '../../utilities/toasts';
+import userDemoImg from '../../img/user.jpg';
+import loginDemoImg from '../../img/login.jpg';
 
 const NavBar = () => {
     const { user, signOutUser, resetPass } = useContext(AuthContext);
@@ -15,7 +17,7 @@ const NavBar = () => {
                 navigate('/login');
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
     const resetPassFunc = email => {
@@ -24,7 +26,7 @@ const NavBar = () => {
                 infoToast(<b>Reset Email sent<br />Please check your inbox & spam</b>, 3000);
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 3000);
+                errorToast(<b>{err.code.slice(5)}</b>, 3000);
             })
     };
 
@@ -48,10 +50,9 @@ const NavBar = () => {
             <div className='bg-neutral px-6 py-4 flex items-center justify-between'>
                 <div className='flex items-center justify-center gap-5'>
                     <img className='w-11 h-11' src="/logo.png" alt="logo" />
-                    <h3 className='text-2xl font-bold'>Learn CSE</h3>
+                    <Link to='/home' className='btn btn-ghost btn-sm text-xl font-bold'>Learn CSE</Link>
                 </div>
-                <div onMouseEnter={() => setNavLink(true)} onMouseLeave={() => setNavLink(false)} className={`w-44 bg-neutral sm:bg-transparent p-6 pt-10 sm:p-0 flex flex-col sm:flex-row justify-center items-center gap-5 absolute sm:relative ${navLink ? 'top-14' : '-top-72'} sm:top-0 right-4 sm:right-0 rounded-b-xl transition-all duration-300 -z-10 sm:z-0`}>
-                    <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | Home'), activeLink) : notActiveLink} to='/home'>Home</NavLink>
+                <div onMouseEnter={() => setNavLink(true)} onMouseLeave={() => setNavLink(false)} className={`w-44 sm:w-fit bg-neutral sm:bg-transparent p-6 pt-10 sm:p-0 flex flex-col sm:flex-row justify-center items-center gap-5 absolute sm:relative ${navLink ? 'top-14' : '-top-72'} sm:top-0 right-4 sm:right-0 rounded-b-xl transition-all duration-300 -z-10 sm:z-0`}>
                     <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | Course'), activeLink) : notActiveLink} to='/course'>Course</NavLink>
                     <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | FAQ'), activeLink) : notActiveLink} to='/faq'>FAQ</NavLink>
                     <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | Blog'), activeLink) : notActiveLink} to='/blog'>Blog</NavLink>
@@ -59,15 +60,15 @@ const NavBar = () => {
                         <div className="tooltip tooltip-left tooltip-accent" data-tip={(user?.uid && user?.displayName) ? user?.displayName.split(' ')[0] : 'Login?'}>
                             <label tabIndex={0}>
                                 <div className={`avatar ${user?.uid && 'online'}`}>
-                                    <div className={`w-9 cursor-pointer ${(imageNoError && user?.photoURL) && 'rounded-full'}`}>
+                                    <div className={`w-9 cursor-pointer rounded-full`}>
                                         {
                                             (imageNoError && user?.photoURL) ?
                                                 <img src={user.photoURL} onError={() => setImageNoError(false)} />
                                                 :
                                                 (user?.photoURL && !imageNoError) ?
-                                                    <HiUser className='text-4xl' />
+                                                    <img src={userDemoImg} alt="user" />
                                                     :
-                                                    <HiOutlineLogin className='text-4xl' />
+                                                    <img src={loginDemoImg} alt="login" />
                                         }
                                     </div>
                                 </div>

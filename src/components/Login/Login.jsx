@@ -26,7 +26,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
 
@@ -39,7 +39,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
 
@@ -53,7 +53,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
 
@@ -64,7 +64,7 @@ const Login = () => {
                 infoToast(<b>Reset Email sent<br />Please check your inbox & spam</b>, 3000);
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 3000);
+                errorToast(<b>{err.code.slice(5)}</b>, 3000);
             })
     };
 

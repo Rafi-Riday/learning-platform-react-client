@@ -1,8 +1,10 @@
 import React, { Suspense, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { errorToast } from '../../utilities/toasts';
 const CollapsePart = React.lazy(() => import('./CollapsePart'));
 
 const CollapseCourse = ({ data }) => {
+    const navigate = useNavigate();
     const { course, name } = data;
     const [partData, setPartData] = useState({});
     useEffect(() => {
@@ -15,7 +17,7 @@ const CollapseCourse = ({ data }) => {
     }, []);
     return (
         <div className="collapse collapse-arrow">
-            <input type="checkbox" className="peer" />
+            <input onInput={() => navigate(`/course/${course}`)} type="checkbox" className="peer" />
             <div
                 className="collapse-title font-bold bg-secondary">
                 {course}. {name}

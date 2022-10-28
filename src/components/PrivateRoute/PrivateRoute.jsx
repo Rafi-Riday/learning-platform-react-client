@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
     const { loading, user } = useContext(AuthContext);
 
     if (loading) {
-        return <div className="hero min-h-screen bg-base-200">
+        return <div className="hero h-full bg-base-200">
             <div className="hero-content flex-col">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body flex-row">

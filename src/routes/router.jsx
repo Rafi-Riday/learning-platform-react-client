@@ -11,11 +11,13 @@ import PageNotFound from "../components/PageNotFound/PageNotFound";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Content from "../components/Content/Content";
+import CourseDetails from "../components/CourseDetails/CourseDetails";
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -50,6 +52,7 @@ const router = createBrowserRouter([
   {
     path: '/course',
     element: <CourseLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/course',
@@ -57,8 +60,13 @@ const router = createBrowserRouter([
         loader: () => fetch('https://10-learning-platform-assignment-server.vercel.app/course'),
       },
       {
+        path: '/course/:course',
+        element: <CourseDetails />,
+        loader: ({ params }) => fetch(`https://10-learning-platform-assignment-server.vercel.app/course/${params.course}`),
+      },
+      {
         path: '/course/:course/part/:part/week/:week/lesson/:lesson',
-        element: <Content />,
+        element: <PrivateRoute><Content /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://10-learning-platform-assignment-server.vercel.app/course/${params.course}/part/${params.part}/week/${params.week}/lesson/${params.lesson}`),
       },
       {

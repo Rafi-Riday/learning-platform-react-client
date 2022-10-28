@@ -11,7 +11,7 @@ const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    const { setLoading, createUser, updateUser, signInGoogle, signInGithub, resetPass } = useContext(AuthContext);
+    const { setLoading, createUser, verificationEmailUser, updateUser, signInGoogle, signInGithub, resetPass } = useContext(AuthContext);
     // ***
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -26,7 +26,7 @@ const Register = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
 
@@ -39,7 +39,7 @@ const Register = () => {
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
 
@@ -52,17 +52,19 @@ const Register = () => {
                 updateUser(fullName, imageURL)
                     .then(() => { setLoading(false) })
                     .catch(err => {
-                        errorToast(<b>{err.code}</b>, 5000);
+                        errorToast(<b>{err.code.slice(5)}</b>, 5000);
                     })
-
                 infoToast(<b>Successfully Registered</b>, 1000);
-                setTimeout(() => {
-                    infoToast(<b>Verification Email sent<br />Please verify your mail<br />Check spam folder if not found</b>, 3000);
-                }, 2000);
+                verificationEmailUser()
+                    .then(() => {
+                        setTimeout(() => {
+                            infoToast(<b>Verification Email sent<br />Please verify your mail<br />Check spam folder if not found</b>, 3000);
+                        }, 2000);
+                    })
                 navigate(from, { replace: true });
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 5000);
+                errorToast(<b>{err.code.slice(5)}</b>, 5000);
             })
     };
 
@@ -73,7 +75,7 @@ const Register = () => {
                 infoToast(<b>Reset Email sent<br />Please check your inbox & spam</b>, 3000);
             })
             .catch(err => {
-                errorToast(<b>{err.code}</b>, 3000);
+                errorToast(<b>{err.code.slice(5)}</b>, 3000);
             })
     };
 

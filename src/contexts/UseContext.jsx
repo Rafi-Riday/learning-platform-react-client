@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import firebaseApp from '../firebase/firebase.config';
 
 // auth context
@@ -17,6 +17,9 @@ const UseContext = ({ children }) => {
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
+    };
+    const verificationEmailUser = () => {
+        return sendEmailVerification(auth.currentUser);
     };
     const signInUser = (email, password) => {
         setLoading(true);
@@ -73,7 +76,7 @@ const UseContext = ({ children }) => {
 
     return (
         <NavBarOpenContext.Provider value={{ navBarY, setNavBarY, darkTheme, setDarkTheme, extraThemeVar, }}>
-            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, }}>
+            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, verificationEmailUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, }}>
                 {children}
             </AuthContext.Provider>
         </NavBarOpenContext.Provider>
