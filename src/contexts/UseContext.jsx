@@ -55,9 +55,24 @@ const UseContext = ({ children }) => {
 
     // NavBar scrolling effect
     const [navBarY, setNavBarY] = useState('top-0');
+    // theme
+    const themeDataFromLS = localStorage.getItem('themeData');
+    const [darkTheme, setDarkTheme] = useState(false);
+    const [extraThemeVar, setExtraThemeVar] = useState(false);
+    useEffect(() => {
+        if (JSON.parse(themeDataFromLS)) {
+            setDarkTheme(JSON.parse(themeDataFromLS));
+            setExtraThemeVar(JSON.parse(themeDataFromLS));
+        }
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('themeData', JSON.stringify(darkTheme));
+    }, [darkTheme]);
+    const mainHTML = document.getElementById('main-html');
+    darkTheme ? mainHTML.setAttribute('data-theme', 'dracula') : mainHTML.setAttribute('data-theme', 'pastel');
 
     return (
-        <NavBarOpenContext.Provider value={{ navBarY, setNavBarY }}>
+        <NavBarOpenContext.Provider value={{ navBarY, setNavBarY, darkTheme, setDarkTheme, extraThemeVar, }}>
             <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, }}>
                 {children}
             </AuthContext.Provider>

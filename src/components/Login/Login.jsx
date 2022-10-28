@@ -21,7 +21,7 @@ const Login = () => {
         signInGoogle()
             .then(res => {
                 const { user } = res;
-                console.log(user);
+
                 infoToast(<b>Successfully Logged in</b>, 1000);
                 navigate(from, { replace: true });
             })
@@ -34,7 +34,7 @@ const Login = () => {
         signInGithub()
             .then(res => {
                 const { user } = res;
-                console.log(user);
+
                 infoToast(<b>Successfully Logged in</b>, 1000);
                 navigate(from, { replace: true });
             })
@@ -48,7 +48,7 @@ const Login = () => {
         signInUser(email, password)
             .then(res => {
                 const { user } = res;
-                console.log(user);
+
                 infoToast(<b>Successfully Logged in</b>, 1000);
                 navigate(from, { replace: true });
             })

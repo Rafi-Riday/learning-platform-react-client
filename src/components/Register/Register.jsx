@@ -21,7 +21,7 @@ const Register = () => {
         signInGoogle()
             .then(res => {
                 const { user } = res;
-                console.log(user);
+
                 infoToast(<b>Successfully Registered</b>, 1000);
                 navigate(from, { replace: true });
             })
@@ -34,7 +34,7 @@ const Register = () => {
         signInGithub()
             .then(res => {
                 const { user } = res;
-                console.log(user);
+
                 infoToast(<b>Successfully Registered</b>, 1000);
                 navigate(from, { replace: true });
             })
@@ -54,7 +54,7 @@ const Register = () => {
                     .catch(err => {
                         errorToast(<b>{err.code}</b>, 5000);
                     })
-                console.log(user);
+
                 infoToast(<b>Successfully Registered</b>, 1000);
                 setTimeout(() => {
                     infoToast(<b>Verification Email sent<br />Please verify your mail<br />Check spam folder if not found</b>, 3000);
