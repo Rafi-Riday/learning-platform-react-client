@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { errorToast } from '../../utilities/toasts';
-import CollapseWeek from './CollapseWeek';
+const CollapseWeek = React.lazy(() => import('./CollapseWeek'));
 
 const CollapsePart = ({ course, part }) => {
     const [weekData, setWeekData] = useState({});
@@ -21,9 +21,11 @@ const CollapsePart = ({ course, part }) => {
             </div>
             <div
                 className="transition-all duration-200 delay-[0ms] p-0 pl-3 peer-checked:pb-0 collapse-content md:text-base">
-                {
-                    weekData?.weeks?.map(w => <CollapseWeek key={w} course={course} part={part} week={w} />)
-                }
+                <Suspense fallback={<div></div>}>
+                    {
+                        weekData?.weeks?.map(w => <CollapseWeek key={w} course={course} part={part} week={w} />)
+                    }
+                </Suspense>
             </div>
         </div>
     );

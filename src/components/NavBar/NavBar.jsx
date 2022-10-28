@@ -50,7 +50,7 @@ const NavBar = () => {
                     <img className='w-11 h-11' src="/logo.png" alt="logo" />
                     <h3 className='text-2xl font-bold'>Learn CSE</h3>
                 </div>
-                <div onMouseEnter={() => setNavLink(true)} onMouseLeave={() => setNavLink(false)} className={`bg-neutral sm:bg-transparent p-6 pt-10 sm:p-0 flex flex-col sm:flex-row justify-center items-center gap-5 absolute sm:relative ${navLink ? 'top-14' : '-top-72'} sm:top-0 right-4 sm:right-0 rounded-b-xl transition-all duration-300 -z-10 sm:z-0`}>
+                <div onMouseEnter={() => setNavLink(true)} onMouseLeave={() => setNavLink(false)} className={`w-44 bg-neutral sm:bg-transparent p-6 pt-10 sm:p-0 flex flex-col sm:flex-row justify-center items-center gap-5 absolute sm:relative ${navLink ? 'top-14' : '-top-72'} sm:top-0 right-4 sm:right-0 rounded-b-xl transition-all duration-300 -z-10 sm:z-0`}>
                     <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | Home'), activeLink) : notActiveLink} to='/home'>Home</NavLink>
                     <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | Course'), activeLink) : notActiveLink} to='/course'>Course</NavLink>
                     <NavLink className={({ isActive }) => isActive ? ((document.title = 'Learn CSE | FAQ'), activeLink) : notActiveLink} to='/faq'>FAQ</NavLink>

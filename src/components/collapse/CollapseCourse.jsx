@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { errorToast } from '../../utilities/toasts';
-import CollapsePart from './CollapsePart';
+const CollapsePart = React.lazy(() => import('./CollapsePart'));
 
 const CollapseCourse = ({ data }) => {
     const { course, name } = data;
@@ -22,9 +22,11 @@ const CollapseCourse = ({ data }) => {
             </div>
             <div
                 className="transition-all duration-200 delay-[0ms] p-0 pl-3 peer-checked:pb-0 collapse-content md:text-base">
-                {
-                    partData?.parts?.map(p => <CollapsePart key={p} course={course} part={p} />)
-                }
+                <Suspense fallback={<div></div>}>
+                    {
+                        partData?.parts?.map(p => <CollapsePart key={p} course={course} part={p} />)
+                    }
+                </Suspense>
             </div>
         </div>
     );

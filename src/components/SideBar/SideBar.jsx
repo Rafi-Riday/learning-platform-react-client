@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { NavBarOpenContext } from '../../contexts/UseContext';
 import { errorToast } from '../../utilities/toasts';
-import CollapseCourse from '../collapse/CollapseCourse';
+const CollapseCourse = React.lazy(() => import('../collapse/CollapseCourse'));
 import HeaderText from '../HeaderText/HeaderText';
 
 const SideBar = () => {
@@ -14,16 +14,17 @@ const SideBar = () => {
                 errorToast(<b>Fetching Unsuccessful</b>, 5000);
             })
     }, []);
-    const { navBarY } = useContext(NavBarOpenContext);
     return (
-        <div className={`transition-all duration-500 sm:sticky ${navBarY === 'top-0' ? 'sm:top-24' : 'sm:top-6'} flex flex-col gap-4`}>
+        <div className={`transition-all duration-500 flex flex-col gap-6`}>
             <div className='flex flex-row justify-center items-center mt-5'>
                 <HeaderText text={<b className='text-lg'>Course Guid</b>} />
             </div>
             <div className='flex flex-col gap-4'>
-                {
-                    courseData?.map(c => <CollapseCourse key={c.course} data={{ ...c }} />)
-                }
+                <Suspense fallback={<div></div>}>
+                    {
+                        courseData?.map(c => <CollapseCourse key={c.course} data={{ ...c }} />)
+                    }
+                </Suspense>
             </div>
         </div >
     );

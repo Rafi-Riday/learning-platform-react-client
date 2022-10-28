@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { errorToast } from '../../utilities/toasts';
 
 const CollapseLesson = ({ course, part, week, lesson }) => {
@@ -20,7 +21,7 @@ const CollapseLesson = ({ course, part, week, lesson }) => {
             </div>
             <div
                 className="transition-all duration-200 delay-[0ms] p-0 pl-3 peer-checked:pb-0 collapse-content md:text-base">
-                <div className='p-4 bg-neutral cursor-pointer'><u>{lessonDetails.name}</u></div>
+                <Link to={`/course/${course}/part/${part}/week/${week}/lesson/${lesson}`} className='block p-4 bg-neutral'><u>{lessonDetails.name}</u></Link>
             </div>
         </div>
     );
