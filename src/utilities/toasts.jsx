@@ -17,7 +17,7 @@ const successToast = (toastText, toastTime) => {
 };
 
 const errorToast = (toastText, toastTime) => {
-    const mainToastFunc = () => toast.error((toastText || 'Wrong!'), { ...commonThemes, autoClose: toastTime || 3000, icon: <HiX />, });
+    const mainToastFunc = () => toast.error((toastText || 'Error!'), { ...commonThemes, autoClose: toastTime || 3000, icon: <HiX />, });
     mainToastFunc();
 };
 

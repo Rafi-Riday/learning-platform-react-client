@@ -13,6 +13,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Content from "../components/Content/Content";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 import CheckOut from "../components/CheckOut/CheckOut";
+import Profile from "../components/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/checkout',
         element: <PrivateRoute><CheckOut /></PrivateRoute>,
+      },
+      {
+        path: '/profile',
+        element: <PrivateRoute><Profile /></PrivateRoute>,
       },
       {
         path: '*',

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { FaBars, FaArrowRight } from "react-icons/fa";
-import { HiX, HiUser, HiOutlineLogin, } from "react-icons/hi";
+import { FaBars, FaArrowRight, FaUserAlt } from "react-icons/fa";
+import { HiX } from "react-icons/hi";
 import { AuthContext, NavBarOpenContext } from '../../contexts/UseContext';
 import { errorToast, infoToast } from '../../utilities/toasts';
 import userDemoImg from '../../img/user.jpg';
@@ -13,7 +13,6 @@ const NavBar = () => {
     const signOutFunc = () => {
         signOutUser()
             .then(() => {
-                infoToast(<b>Signed Out !!</b>, 2000);
                 navigate('/login');
             })
             .catch(err => {
@@ -89,7 +88,7 @@ const NavBar = () => {
                                 {
                                     user?.uid ?
                                         <>
-                                            <button onClick={() => resetPassFunc(user?.email)} className='btn glass bg-error hover:bg-error btn-sm text-xs'>Reset Pass</button>
+                                            <NavLink className='btn glass btn-sm text-xs' to='/profile'>Profile&nbsp;&nbsp;<FaUserAlt /></NavLink>
                                             <button onClick={signOutFunc} className='btn glass bg-error hover:bg-error btn-sm text-xs'>Logout&nbsp;&nbsp;<FaArrowRight /></button>
                                         </>
                                         :

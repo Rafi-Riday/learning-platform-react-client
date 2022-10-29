@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, deleteUser, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import firebaseApp from '../firebase/firebase.config';
 
 // auth context
@@ -36,7 +36,6 @@ const UseContext = ({ children }) => {
         return signInWithPopup(auth, githubAuthProvider);
     };
     const updateUser = (name, photo) => {
-        setLoading(true);
         return updateProfile(auth.currentUser, { displayName: name, photoURL: photo });
     };
     const signOutUser = () => {
@@ -45,6 +44,9 @@ const UseContext = ({ children }) => {
     };
     const resetPass = (email) => {
         return sendPasswordResetEmail(auth, email);
+    };
+    const deleteAccount = () => {
+        return deleteUser(user);
     };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -76,7 +78,7 @@ const UseContext = ({ children }) => {
 
     return (
         <NavBarOpenContext.Provider value={{ navBarY, setNavBarY, darkTheme, setDarkTheme, extraThemeVar, }}>
-            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, verificationEmailUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, }}>
+            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, verificationEmailUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, deleteAccount, }}>
                 {children}
             </AuthContext.Provider>
         </NavBarOpenContext.Provider>
