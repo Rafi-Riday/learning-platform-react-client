@@ -41,18 +41,6 @@ const FAQ = () => {
                                     <input type="checkbox" className="peer" />
                                     <div
                                         className="collapse-title text-dracula_color font-bold border-2 border-neutral-content rounded-lg rounded-b-none">
-                                        IS IT POSSIBLE TO DO BOTH GRAPHIC DESIGN AND CODING?
-                                    </div>
-                                    <div
-                                        className="peer-checked:pt-2 collapse-content md:text-base border-2 border-neutral-content rounded-lg rounded-t-none">
-                                        If you have an interest in coding and graphic design, then there's nothing to say you shouldn't learn skills in both areas. They often work hand-in-hand, so having knowledge and skills in both areas could be desirable for certain career paths. You could also think about pursuing something in between like UI design, which is a very in-demand career right now!
-                                    </div>
-                                </div>
-                                {/*  */}
-                                <div className="collapse collapse-arrow">
-                                    <input type="checkbox" className="peer" />
-                                    <div
-                                        className="collapse-title text-dracula_color font-bold border-2 border-neutral-content rounded-lg rounded-b-none">
                                         SHOULD I LEARN SKILLS IN SEVERAL AREAS, OR FOCUS ON ONE THING IN PARTICULAR?
                                     </div>
                                     <div

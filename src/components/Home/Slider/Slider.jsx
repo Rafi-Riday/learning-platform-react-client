@@ -20,7 +20,7 @@ const Slider = () => {
             })
     }, []);
     return (
-        <div className=''>
+        <>
             <AutoplaySlider
                 className='aws-btn'
                 organic-arrow-thickness='20px'
@@ -46,7 +46,7 @@ const Slider = () => {
                     </div>
                 </div>)}
             </AutoplaySlider>
-        </div>
+        </>
     );
 };
 

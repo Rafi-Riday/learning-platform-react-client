@@ -98,6 +98,9 @@ const Profile = () => {
                                 </div>
                             </div>
                             <h3 className='text-center font-extrabold text-2xl'>{updatedUserName}</h3>
+                            {
+                                user?.email && <h3 className='text-center text-neutral-content'>{user?.email}</h3>
+                            }
                             <div className="collapse collapse-arrow">
                                 <input type="checkbox" className="peer" />
                                 <div
