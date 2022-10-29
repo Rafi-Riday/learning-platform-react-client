@@ -27,7 +27,7 @@ const Slider = () => {
                 animation="cubeAnimation"
                 play={true}
                 cancelOnInteraction={false}
-                interval={10000}
+                interval={5000}
             >
                 {courseData.map(c => <div className='w-full h-full overflow-hidden rounded-xl' key={c.course}>
                     <div className="mt-2 card w-full h-full bg-base-100 shadow-xl image-full">
