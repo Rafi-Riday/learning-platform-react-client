@@ -117,7 +117,7 @@ const Login = () => {
                                     <input className="btn btn-secondary" type="submit" />
                                 </div>
                             </form>
-                            <span className='w-full flex items-center justify-center text-base-content'><span className='-mt-4'>_________</span>&nbsp;<span>Or</span>&nbsp;<span className='-mt-4'>_________</span></span>
+                            <div className="divider">OR</div>
                             <button onClick={googleSignIn} className="btn btn-base-content btn-outline"><FcGoogle className='text-xl' />&nbsp;&nbsp;&nbsp;Log In with Google</button>
                             <button onClick={githubSignIn} className="btn btn-base-content btn-outline"><FaGithub className='text-xl' />&nbsp;&nbsp;&nbsp;Log In with GitHub</button>
                         </div>

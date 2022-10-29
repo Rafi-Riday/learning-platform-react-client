@@ -45,7 +45,7 @@ const CheckOut = () => {
                             <div className='text-center'>Choose Payment Method</div>
                             <button onClick={successPay} className="btn btn-base-content btn-outline"><FaCreditCard className='text-xl text-sky-500' />&nbsp;&nbsp;Credit</button>
                             <button onClick={successPay} className="btn btn-base-content btn-outline"><FaPiggyBank className='text-xl text-yellow-500' />&nbsp;&nbsp;Bank</button>
-                            <span className='w-full flex items-center justify-center text-base-content'><span className='-mt-4'>_________</span>&nbsp;<span>Or</span>&nbsp;<span className='-mt-4'>_________</span></span>
+                            <div className="divider">OR</div>
                             <button onClick={successPay} className="btn btn-base-content btn-outline"><FcGoogle className='text-xl' />&nbsp;&nbsp;Pay</button>
                             <button onClick={successPay} className="btn btn-base-content btn-outline"><FaAmazonPay className='text-2xl text-orange-600' />&nbsp;&nbsp;Amazon</button>
                             <button onClick={successPay} className="btn btn-base-content btn-outline"><FaPaypal className='text-xl text-indigo-500' />&nbsp;&nbsp;Paypal</button>

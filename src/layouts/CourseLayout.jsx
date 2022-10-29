@@ -11,10 +11,10 @@ const CourseLayout = () => {
             <NavBar />
             <div className='grow flex flex-col items-center justify-center mt-24 mb-10'>
                 <div className='grid grid-cols-4 px-4 gap-4'>
-                    <div className='col-span-4 sm:col-span-2 lg:col-span-3 relative'>
+                    <div className='col-span-4 sm:col-span-2 md:col-span-3 relative'>
                         <Outlet />
                     </div>
-                    <aside className='sm:mt-0 col-span-4 sm:col-span-2 lg:col-span-1'>
+                    <aside className='sm:mt-0 col-span-4 sm:col-span-2 md:col-span-1'>
                         <Suspense fallback={<div></div>}>
                             <SideBar />
                         </Suspense>

@@ -59,6 +59,7 @@ const Footer = () => {
                                 <Link to='/register' className="link link-hover">Register</Link>
                             </>
                     }
+                    <Link to='/checkout' className="link link-hover">Checkout</Link>
                 </div>
             </footer>
             <footer className="footer px-10 py-4 border-t bg-base-300 text-base-content">
