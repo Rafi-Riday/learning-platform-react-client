@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaYoutube, } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContext';
-import { errorToast, infoToast } from '../../utilities/toasts';
+import { errorToast } from '../../utilities/toasts';
 
 const Footer = () => {
     const { user, signOutUser } = useContext(AuthContext);
@@ -39,6 +39,13 @@ const Footer = () => {
                     }
                 </div>
                 <div>
+                    <span className="footer-title">Site Info</span>
+                    <Link to='/home' className="link link-hover">Home</Link>
+                    <Link to='/blog' className="link link-hover">Blog</Link>
+                    <Link to='/faq' className="link link-hover">FAQ</Link>
+                    <Link to='/terms-and-conditions' className="link link-hover">Terms & Conditions</Link>
+                </div>
+                <div>
                     <span className="footer-title">User</span>
                     {
                         user?.uid ?
@@ -52,13 +59,6 @@ const Footer = () => {
                                 <Link to='/register' className="link link-hover">Register</Link>
                             </>
                     }
-                </div>
-                <div>
-                    <span className="footer-title">Site Info</span>
-                    <Link to='/home' className="link link-hover">Home</Link>
-                    <Link to='/blog' className="link link-hover">Blog</Link>
-                    <Link to='/faq' className="link link-hover">FAQ</Link>
-                    <Link className="link link-hover">Terms & policy</Link>
                 </div>
             </footer>
             <footer className="footer px-10 py-4 border-t bg-base-300 text-base-content">

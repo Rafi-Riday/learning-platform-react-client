@@ -14,6 +14,7 @@ import Content from "../components/Content/Content";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 import CheckOut from "../components/CheckOut/CheckOut";
 import Profile from "../components/Profile/Profile";
+import TermsAndConditions from "../components/TermsAndConditions/TermsAndConditions";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/terms-and-conditions',
+        element: <TermsAndConditions />,
       },
       {
         path: '/checkout',

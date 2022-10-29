@@ -16,7 +16,7 @@ const SideBar = () => {
     }, []);
     return (
         <div className={`transition-all duration-500 flex flex-col gap-6`}>
-            <div className='flex flex-row justify-center items-center mt-5'>
+            <div className='flex flex-row justify-center items-center mt-0'>
                 <HeaderText text={<b className='text-lg'>Course Guid</b>} />
             </div>
             <div className='flex flex-col gap-4'>

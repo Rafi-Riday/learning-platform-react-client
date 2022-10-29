@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { FaCheckCircle, FaRedoAlt, FaRegTrashAlt, FaArrowRight } from "react-icons/fa";
 import { HiBadgeCheck } from "react-icons/hi";
 import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../contexts/UseContext';
 import userDemoImg from '../../img/user.jpg';
 import loginDemoImg from '../../img/login.jpg';
-import { useForm } from 'react-hook-form';
 import { errorToast, infoToast } from '../../utilities/toasts';
 
 const Profile = () => {

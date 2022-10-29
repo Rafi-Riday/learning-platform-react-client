@@ -25,7 +25,7 @@ const Course = () => {
                         <button className='btn btn-sm btn-outline' onClick={toPdf}>Save pdf&nbsp;&nbsp;<HiOutlineDownload className='text-lg text-indigo-500' /></button>
                     )}
                 </ReactToPdf>
-                <Link to='/checkout' className='btn btn-sm btn-outline'>Get Premium Access&nbsp;&nbsp;<HiStar className='text-lg text-orange-400' /></Link>
+                <Link to='/checkout' className='btn btn-sm btn-outline'>Get Premium Access&nbsp;<HiStar className='text-lg text-orange-400' /></Link>
             </div>
         </>
     );

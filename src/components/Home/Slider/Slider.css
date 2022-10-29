@@ -1,0 +1,24 @@
+.aws-btn {
+    --slider-height-percentage: 65%;
+    --slider-transition-duration: 200ms;
+    --organic-arrow-thickness: 6px;
+    --organic-arrow-border-radius: 30px;
+    --organic-arrow-height: 26px;
+    --organic-arrow-color: #ffffff;
+    --control-button-width: 12%;
+    --control-button-height: 25%;
+    --control-button-background: transparent;
+    --control-bullet-color: #6bc9ff;
+    --control-bullet-active-color: #20abfc;
+    --loader-bar-color: transparent;
+    --loader-bar-height: 20px;
+}
+
+.awssld__content {
+    background-color: #0000;
+}
+
+.awssld__timer--run {
+    background-color: #20abfc;
+    border-radius: 5px;
+}
