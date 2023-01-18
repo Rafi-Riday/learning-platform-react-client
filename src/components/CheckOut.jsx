@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { FaAmazonPay, FaCreditCard, FaPaypal, FaPiggyBank, FaStripe } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { FaAmazonPay, FaPaypal, FaStripe, FaCreditCard, FaPiggyBank } from "react-icons/fa";
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/UseContext';
-import userDemoImg from '../../img/user.jpg';
-import loginDemoImg from '../../img/login.jpg';
-import { successToast } from '../../utilities/toasts';
+import { AuthContext } from '../contexts/UseContext';
+import loginDemoImg from '../img/login.jpg';
+import userDemoImg from '../img/user.jpg';
+import { successToast } from '../utilities/toasts';
 
 const CheckOut = () => {
     document.title = 'Learn CSE | CheckOut';

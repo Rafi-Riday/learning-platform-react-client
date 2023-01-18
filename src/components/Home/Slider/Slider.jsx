@@ -12,7 +12,7 @@ const Slider = () => {
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     const [courseData, setCourseData] = useState([])
     useEffect(() => {
-        fetch(`https://10-learning-platform-assignment-server.vercel.app/course`)
+        fetch(`https://10-learning-platform-assignment-server.vercel.app/course-minified`)
             .then(res => res.json())
             .then(data => setCourseData(data))
             .catch(err => {

@@ -1,8 +1,8 @@
 import React from 'react';
+import { FaCheckCircle, FaTrophy } from 'react-icons/fa';
+import { HiX } from "react-icons/hi";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaCheckCircle, FaTrophy, } from 'react-icons/fa';
-import { HiX } from "react-icons/hi";
 
 const commonThemes = { theme: 'colored', position: "bottom-right", hideProgressBar: false, closeOnClick: true, pauseOnHover: true, draggable: true, progress: undefined, };
 

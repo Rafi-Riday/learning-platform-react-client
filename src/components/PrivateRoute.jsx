@@ -1,7 +1,9 @@
+// library imports
 import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../../contexts/UseContext';
 import { Bars } from 'react-loader-spinner';
+import { Navigate, useLocation } from 'react-router-dom';
+// authentication context : changeable
+import { AuthContext } from '../contexts/UseContext';
 
 const PrivateRoute = ({ children }) => {
     const location = useLocation();

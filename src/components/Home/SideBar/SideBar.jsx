@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { } from "react-icons/fa";
-import { HiOutlineLogin, HiOutlineLogout, HiStar } from "react-icons/hi";
+import React, { useContext, useState } from 'react';
 import { FcDocument } from "react-icons/fc";
-import { HiUserPlus } from "react-icons/hi2";
-import { useContext } from 'react';
+import { HiOutlineLogin, HiOutlineLogout, HiStar } from "react-icons/hi";
+import { RiUserAddFill } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/UseContext';
 import userDemoImg from '../../../img/user.jpg';
 import { errorToast } from '../../../utilities/toasts';
-import { Link } from 'react-router-dom';
 
 const SideBar = () => {
-    document.title = 'Learn CSE | Profile';
     const { user, signOutUser } = useContext(AuthContext);
     const [imageNoError, setImageNoError] = useState(true);
 
@@ -50,7 +47,7 @@ const SideBar = () => {
                                     :
                                     <>
                                         <Link to='/login' className="btn btn-base-content btn-outline">Log In&nbsp;&nbsp;<HiOutlineLogin className='text-lg text-blue-400' /></Link>
-                                        <Link to='/register' className="btn btn-base-content btn-outline">Register&nbsp;<HiUserPlus className='text-lg text-orange-400' /></Link>
+                                        <Link to='/register' className="btn btn-base-content btn-outline">Register&nbsp;<RiUserAddFill className='text-lg text-orange-400' /></Link>
                                     </>
                             }
                             <Link to='/checkout' className='btn btn-sm btn-outline'>Get Premium Access&nbsp;&nbsp;<HiStar className='text-lg text-orange-400' /></Link>

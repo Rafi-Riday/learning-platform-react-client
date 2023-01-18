@@ -1,17 +1,11 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { errorToast } from '../../utilities/toasts';
-const CollapseWeek = React.lazy(() => import('./CollapseWeek'));
+import React, { useContext } from 'react';
+import { FaLock, FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UseContext';
 
-const CollapsePart = ({ course, part }) => {
-    const [weekData, setWeekData] = useState({});
-    useEffect(() => {
-        fetch(`https://10-learning-platform-assignment-server.vercel.app/course/${course}/part/${part}`)
-            .then(res => res.json())
-            .then(data => setWeekData(data))
-            .catch(err => {
-                errorToast(<b>Fetching Unsuccessful</b>, 5000);
-            })
-    }, []);
+const CollapsePart = ({ course, partData }) => {
+    const { user } = useContext(AuthContext);
+    const { part, lessons } = partData;
     return (
         <div className="collapse collapse-arrow">
             <input type="checkbox" className="peer" />
@@ -21,11 +15,9 @@ const CollapsePart = ({ course, part }) => {
             </div>
             <div
                 className="transition-all duration-200 delay-[0ms] p-0 pl-3 peer-checked:pb-0 collapse-content md:text-base">
-                <Suspense fallback={<div></div>}>
-                    {
-                        weekData?.weeks?.map(w => <CollapseWeek key={w} course={course} part={part} week={w} />)
-                    }
-                </Suspense>
+                {
+                    lessons?.map(l => <Link to={`/course/${course}/part/${part}/lesson/${l.lesson}`} key={`${course}-${part}-${l.lesson}`} className='block p-4 bg-neutral'><u className='flex items-center justify-start gap-1'>{user?.uid ? <FaStar className='text-orange-400' /> : <FaLock className='text-error' />}{`${l.lesson}. ${l.name}`}</u></Link>)
+                }
             </div>
         </div>
     );

@@ -1,17 +1,14 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useContext } from 'react';
-import { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaYoutube, } from "react-icons/fa";
+import React, { useContext, useEffect, useState } from 'react';
+import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/UseContext';
-import { errorToast } from '../../utilities/toasts';
+import { AuthContext } from '../contexts/UseContext';
+import { errorToast } from '../utilities/toasts';
 
 const Footer = () => {
     const { user, signOutUser } = useContext(AuthContext);
     const [courseData, setCourseData] = useState([]);
     useEffect(() => {
-        fetch(`https://10-learning-platform-assignment-server.vercel.app/course`)
+        fetch(`https://10-learning-platform-assignment-server.vercel.app/course-minified`)
             .then(res => res.json())
             .then(data => setCourseData(data))
             .catch(err => {

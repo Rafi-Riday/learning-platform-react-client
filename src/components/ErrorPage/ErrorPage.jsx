@@ -1,12 +1,12 @@
 import React from 'react';
 import { useRouteError } from "react-router-dom";
-import HeaderText from '../HeaderText/HeaderText';
 import SadLogo from '../../img/sad.png';
-import NavBar from '../NavBar/NavBar';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer';
+import HeaderText from '../HeaderText';
+import NavBar from '../NavBar';
 
 const ErrorPage = () => {
-    document.title = 'Buzz Quizzers | Fetch Error';
+    document.title = 'Learn CSE | Fetch Error';
     const error = useRouteError();
     error && console.error(error);
     return (
@@ -20,7 +20,7 @@ const ErrorPage = () => {
                         <br />
                         <b>An unexpected error has occurred.</b>
                         <p>
-                            <i className='font-thin'>Fetch Error : {error?.statusText || error?.message || 'Data not found'}</i>
+                            <i className='font-thin'>Error : {error?.statusText || error?.message || 'Data not found'}</i>
                         </p>
                     </div>
                 </div>

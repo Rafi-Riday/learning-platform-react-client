@@ -9,13 +9,12 @@
 - react-icons
 - react-loader-spinner
 - react-router-dom
-- react-to-pdf
 - react-toastify
 - firebase
 - tailwindcss
 - daisyui
-- postcss
 - autoprefixer
+- react masonry css
 
 #### Features :
 - Responsive NavBar with scrolling effect
@@ -26,3 +25,4 @@
 - Used react-toastify to inform user in details. Created 3 types of toasts > infoToast, errorToast and successToast.
 - Added toggled question-answer Blog & FAQ.
 - Added custom ErrorPage in the parent layout element of route paths.
+- grid view in masonry style --> FAQ, Blog

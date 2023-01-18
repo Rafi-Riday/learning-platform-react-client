@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
+import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContext';
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
 // ***
 import { useForm } from 'react-hook-form';
 import { errorToast, infoToast } from '../../utilities/toasts';
@@ -118,8 +118,8 @@ const Login = () => {
                                 </div>
                             </form>
                             <div className="divider">OR</div>
-                            <button onClick={googleSignIn} className="btn btn-base-content btn-outline"><FcGoogle className='text-xl' />&nbsp;&nbsp;&nbsp;Log In with Google</button>
-                            <button onClick={githubSignIn} className="btn btn-base-content btn-outline"><FaGithub className='text-xl' />&nbsp;&nbsp;&nbsp;Log In with GitHub</button>
+                            <button onClick={googleSignIn} className="btn btn-base-content btn-outline"><FcGoogle className='text-xl' />&nbsp;&nbsp;&nbsp;Continue with Google</button>
+                            <button onClick={githubSignIn} className="btn btn-base-content btn-outline"><FaGithub className='text-xl' />&nbsp;&nbsp;&nbsp;Continue with GitHub</button>
                         </div>
                     </div>
                 </div>

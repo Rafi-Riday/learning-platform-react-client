@@ -1,18 +1,17 @@
 import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UseContext';
-import { FcGoogle } from "react-icons/fc";
-// ***
-import { useForm } from 'react-hook-form';
 import { errorToast, infoToast } from '../../utilities/toasts';
-import { FaGithub, FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const { setLoading, createUser, verificationEmailUser, updateUser, signInGoogle, signInGithub, resetPass } = useContext(AuthContext);
-    // ***
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [passVisible, setPassVisible] = useState(false);
@@ -20,8 +19,6 @@ const Register = () => {
     const googleSignIn = () => {
         signInGoogle()
             .then(res => {
-                const { user } = res;
-
                 infoToast(<b>Successfully Registered</b>, 1000);
                 navigate(from, { replace: true });
             })
@@ -33,8 +30,6 @@ const Register = () => {
     const githubSignIn = () => {
         signInGithub()
             .then(res => {
-                const { user } = res;
-
                 infoToast(<b>Successfully Registered</b>, 1000);
                 navigate(from, { replace: true });
             })
@@ -48,7 +43,6 @@ const Register = () => {
 
         createUser(email, password)
             .then(res => {
-                const { user } = res;
                 updateUser(fullName, imageURL)
                     .then(() => { setLoading(false) })
                     .catch(err => {
@@ -144,8 +138,8 @@ const Register = () => {
                                 </div>
                             </form>
                             <div className="divider">OR</div>
-                            <button onClick={googleSignIn} className="btn btn-base-content btn-outline"><FcGoogle className='text-xl' />&nbsp;&nbsp;&nbsp;Register with Google</button>
-                            <button onClick={githubSignIn} className="btn btn-base-content btn-outline"><FaGithub className='text-xl' />&nbsp;&nbsp;&nbsp;Log In with GitHub</button>
+                            <button onClick={googleSignIn} className="btn btn-base-content btn-outline"><FcGoogle className='text-xl' />&nbsp;&nbsp;&nbsp;Continue with Google</button>
+                            <button onClick={githubSignIn} className="btn btn-base-content btn-outline"><FaGithub className='text-xl' />&nbsp;&nbsp;&nbsp;Continue with GitHub</button>
                         </div>
                     </div>
                 </div>

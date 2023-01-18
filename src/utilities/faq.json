@@ -1,0 +1,26 @@
+[
+    {
+        "question": "HOW DO I FIGURE OUT WHAT TO LEARN?",
+        "answer": "The most important thing is that you want to learn something that interests you, because once you start learning, you'll be with this topic for a while. Choosing something just because it's popular or what others are doing isn't the way to go because if you don't have a true interest in it, you'll lose the motivation to learn! Spend some time seriously looking into the different tech career paths before choosing one to go down."
+    },
+    {
+        "question": "WHICH PROGRAMMING LANGUAGE IS THE BEST TO LEARN?",
+        "answer": "I usually tell most people to start by learning HTML and CSS, then move into learning JavaScript. The reason is that JavaScript is used everywhere: frontend, backend, and even to build mobile apps. It has many use cases, which is why I think it's smart to learn."
+    },
+    {
+        "question": "SHOULD I LEARN SKILLS IN SEVERAL AREAS, OR FOCUS ON ONE THING IN PARTICULAR?",
+        "answer": "Personally, I'd say choose a path and stick to it! Learning too many things at once will slow you down. Here are a few ideas of things you can choose to focus on, and a little bit about each one.<br /><br /><ul><li>* Data science</li><li>* Data analysis</li><li>* Ruby on Rails</li><li>* UX</li></ul>"
+    },
+    {
+        "question": "WHAT'S THE FASTEST WAY/SHORTCUTS TO LEARN TO CODE?",
+        "answer": "To be a good programmer, there are no shortcuts. That is not the right way to think about it. Instead, you should take time mastering the fundamentals. This will help you in the long run. I recommend listening to this episode of the podcast about why it's important to focus on the fundamentals first."
+    },
+    {
+        "question": "WHERE CAN YOU LEARN THE BASICS OF COMPUTER SCIENCE?",
+        "answer": "<ul>Resources :<br /><br /><li>* Udacity</li><li>* Coursera</li><li>* edX</li><li>* Treehouse</></ul>"
+    },
+    {
+        "question": "WHAT IS THE BEST COURSE OF ACTION FOR ME TO LEARN HTML, CSS, AND JAVASCRIPT?",
+        "answer": "These are some of the most common languages, and the ones that are most recommended as a starting point for people completely new to coding, so there's a bunch of courses online to help you out.<br/><br/>If you want to focus on front-end, you should definitely master these three first—especially JavaScript. If you know JavaScript well, it won't be hard to become a front-end web developer. There are loads of JavaScript classes online for all different skill levels, whether you're a beginner or looking to level up the skills you have already. I recommend looking into Team Treehouse, and Coursera also has a great class on HTML, CSS, and JavaScript."
+    }
+]

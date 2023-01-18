@@ -1,20 +1,20 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
-import CourseLayout from "../layouts/CourseLayout";
-import MainLayout from "../layouts/MainLayout";
-import Blog from "../components/Blog/Blog";
-import Course from "../components/Course/Course";
-import FAQ from "../components/FAQ/FAQ";
+import Blog from "../components/Blog";
+import CheckOut from "../components/CheckOut";
+import Content from "../components/Content";
+import Course from "../components/Course";
+import CourseDetails from "../components/CourseDetails";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import PageNotFound from "../components/ErrorPage/PageNotFound";
+import FAQ from "../components/FAQ";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
-import Register from "../components/Register/Register";
-import PageNotFound from "../components/PageNotFound/PageNotFound";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
-import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
-import Content from "../components/Content/Content";
-import CourseDetails from "../components/CourseDetails/CourseDetails";
-import CheckOut from "../components/CheckOut/CheckOut";
-import Profile from "../components/Profile/Profile";
-import TermsAndConditions from "../components/TermsAndConditions/TermsAndConditions";
+import Register from "../components/Login/Register";
+import PrivateRoute from "../components/PrivateRoute";
+import Profile from "../components/Profile";
+import TermsAndConditions from "../components/TermsAndConditions";
+import CourseLayout from "../layouts/CourseLayout";
+import MainLayout from "../layouts/MainLayout";
 
 const router = createBrowserRouter([
   {
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
       {
         path: '/course',
         element: <Course />,
-        loader: () => fetch('https://10-learning-platform-assignment-server.vercel.app/course'),
+        loader: () => fetch('https://10-learning-platform-assignment-server.vercel.app/course-minified'),
       },
       {
         path: '/course/:course',
@@ -80,9 +80,9 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://10-learning-platform-assignment-server.vercel.app/course/${params.course}`),
       },
       {
-        path: '/course/:course/part/:part/week/:week/lesson/:lesson',
+        path: '/course/:course/part/:part/lesson/:lesson',
         element: <PrivateRoute><Content /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://10-learning-platform-assignment-server.vercel.app/course/${params.course}/part/${params.part}/week/${params.week}/lesson/${params.lesson}`),
+        loader: ({ params }) => fetch(`https://10-learning-platform-assignment-server.vercel.app/course/${params.course}/part/${params.part}/lesson/${params.lesson}`),
       },
       {
         path: '*',

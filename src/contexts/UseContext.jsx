@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, deleteUser, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import React, { createContext, useEffect, useState } from 'react';
 import firebaseApp from '../firebase/firebase.config';
 
 // auth context
@@ -62,8 +62,8 @@ const UseContext = ({ children }) => {
     const [navBarY, setNavBarY] = useState('top-0');
     // theme
     const themeDataFromLS = localStorage.getItem('themeData');
-    const [darkTheme, setDarkTheme] = useState(false);
-    const [extraThemeVar, setExtraThemeVar] = useState(false);
+    const [darkTheme, setDarkTheme] = useState(true);
+    const [extraThemeVar, setExtraThemeVar] = useState(true);
     useEffect(() => {
         if (JSON.parse(themeDataFromLS)) {
             setDarkTheme(JSON.parse(themeDataFromLS));
@@ -78,7 +78,7 @@ const UseContext = ({ children }) => {
 
     return (
         <NavBarOpenContext.Provider value={{ navBarY, setNavBarY, darkTheme, setDarkTheme, extraThemeVar, }}>
-            <AuthContext.Provider value={{ loading, setLoading, user, setUser, createUser, signInUser, verificationEmailUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, deleteAccount, }}>
+            <AuthContext.Provider value={{ loading, setLoading, user, createUser, signInUser, verificationEmailUser, signInGoogle, signInGithub, updateUser, signOutUser, resetPass, deleteAccount, }}>
                 {children}
             </AuthContext.Provider>
         </NavBarOpenContext.Provider>

@@ -1,13 +1,10 @@
-import React from 'react';
-import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { NavBarOpenContext } from '../../contexts/UseContext';
-import HeaderText from '../HeaderText/HeaderText';
-import { HiOutlineDownload } from "react-icons/hi";
-import { FaRegCopy } from "react-icons/fa";
+import React, { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaRegCopy } from "react-icons/fa";
+import { useLoaderData } from 'react-router-dom';
+import { NavBarOpenContext } from '../contexts/UseContext';
+import HeaderText from './HeaderText';
 
-import ReactToPdf from 'react-to-pdf';
 import { useState } from 'react';
 const ref = React.createRef();
 
@@ -38,11 +35,6 @@ const Content = () => {
                                 <button onMouseLeave={() => setCopyMsg('Copy')} className='btn btn-sm btn-outline flex items-center justify-center'>Copy Video URL&nbsp;&nbsp;<FaRegCopy className='text-orange-400' /></button>
                             </CopyToClipboard>
                         </div>
-                        <ReactToPdf targetRef={ref} filename={`${name}-${date}.pdf`}>
-                            {({ toPdf }) => (
-                                <button className='btn btn-sm btn-outline' onClick={toPdf}>Save pdf&nbsp;&nbsp;<HiOutlineDownload className='text-lg text-indigo-500' /></button>
-                            )}
-                        </ReactToPdf>
                     </div>
                 </div>
             </div>

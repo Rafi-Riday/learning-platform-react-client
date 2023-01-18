@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/UseContext';
 import SideBar from './SideBar/SideBar';
 import Slider from './Slider/Slider';
 
 const Home = () => {
     document.title = 'Learn CSE | Home';
-    const { user } = useContext(AuthContext);
     return (
         <>
             <div className='w-full grid grid-cols-4 px-4 gap-4'>

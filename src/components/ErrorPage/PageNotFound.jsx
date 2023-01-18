@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderText from '../HeaderText/HeaderText';
 import SadLogo from '../../img/sad.png';
+import HeaderText from '../HeaderText';
 
 const PageNotFound = () => {
     document.title = 'Buzz Quizzers | 404';
