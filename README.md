@@ -4,16 +4,14 @@
 #### Libraries & packages used in this project :
 - vite (for production build)
 - react
-- react-dom
+- react-router-dom
 - react-hook-form
 - react-icons
 - react-loader-spinner
-- react-router-dom
 - react-toastify
 - firebase
 - tailwindcss
 - daisyui
-- autoprefixer
 - react masonry css
 
 #### Features :
